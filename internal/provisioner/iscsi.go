@@ -11,9 +11,6 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-const (
-)
-
 // AccessModesContains returns whether the requested mode is contained by modes
 func AccessModesContains(modes []v1.PersistentVolumeAccessMode, mode v1.PersistentVolumeAccessMode) bool {
 	for _, m := range modes {
