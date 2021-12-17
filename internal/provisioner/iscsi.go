@@ -62,9 +62,11 @@ func (p *ISCSIProvisioner) Provision(options controller.ProvisionOptions) (*v1.P
 
 	size := options.PersistentVolumeClaim.Spec.Resources.Requests.Storage()
 
-	// TODO: Deal with already existing volumes
 	if err := p.targetd.VolCreate(pool, options.VolumeName, size.Value()); err != nil {
-		return nil, fmt.Errorf("unable to create volume: %s", formatTargetdError(err))
+		// NOTE: this is probably safe because k8s ensure PV names are unique.
+		if e := targetd.UnwrapError(err); e == nil || e.Code() != targetd.NameConflictError {
+			return nil, fmt.Errorf("unable to create volume: %s", formatTargetdError(err))
+		}
 	}
 
 	lun, err := p.targetd.GetFirstAvailableLun()
