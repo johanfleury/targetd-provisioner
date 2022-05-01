@@ -2,7 +2,7 @@ stages:
   - test
 
 .golang:
-  image: golang:1.16
+  image: golang:1.18
 
 test:fmt:
   extends: .golang
