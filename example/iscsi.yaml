@@ -1,0 +1,28 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: iscsi-test
+provisioner: targetd-provisioner-iscsi-test
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+reclaimPolicy: Retain
+parameters:
+  targetd-provisioner/initiators: iqn.2021-02.example.com:controller01,iqn.2021-02.example.com:worker01,iqn.2021-02.example.com:worker02,iqn.2021-02.example.com:worker03
+  targetd-provisioner/pool: kubernetes
+  targetd-provisioner/portals: 192.0.2.0
+  targetd-provisioner/target: iqn.2021-02.example.com:targetd
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: test
+  namespace: default
+spec:
+  storageClassName: iscsi-test
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi

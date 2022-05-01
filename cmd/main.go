@@ -51,7 +51,7 @@ func main() {
 	controller.InitFlags(cmd)
 
 	cmd.PersistentFlags().StringVar(&targetdURL, "targetd-url", "", ""+
-		"URL of the targetd API (it can also be set throught the TARGETD_PROVISIONER_URL environement variable).")
+		"URL of the targetd API (e.g. http://user:password@targetd.example.com:18700/targetrpc). It can also be set throught the TARGETD_PROVISIONER_URL environement variable.")
 	cmd.MarkPersistentFlagRequired("targetd-url")
 
 	if err := cmd.Execute(); err != nil {
