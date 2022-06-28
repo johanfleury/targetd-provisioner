@@ -6,8 +6,8 @@ require (
 	github.com/spf13/cobra v1.5.0
 	gitlab.com/Arcaik/external-provisioner v0.5.0
 	gitlab.com/Arcaik/targetd-client-go v0.1.0
-	k8s.io/api v0.24.0
-	k8s.io/apimachinery v0.24.0
+	k8s.io/api v0.24.2
+	k8s.io/apimachinery v0.24.2
 )
 
 require (
