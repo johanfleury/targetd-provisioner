@@ -2,7 +2,7 @@
 # Builder image
 #
 
-FROM golang:1.19 as builder
+FROM golang:1.20 as builder
 
 WORKDIR /go/src
 COPY . .
