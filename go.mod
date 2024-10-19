@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/spf13/cobra v1.7.0
-	gitlab.com/Arcaik/external-provisioner v0.5.2
+	gitlab.com/Arcaik/external-provisioner v0.6.0
 	gitlab.com/Arcaik/targetd-client-go v0.1.0
 	k8s.io/api v0.26.1
 	k8s.io/apimachinery v0.26.1
